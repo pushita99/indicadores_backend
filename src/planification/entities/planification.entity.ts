@@ -39,19 +39,19 @@ export class Planification {
 
     @ManyToOne (
         () => Indicator,
-        (indicator) => indicator.planifications
+        (indicator) => indicator.planifications, {eager: true,}
     )
     indicator: Indicator
 
     @ManyToOne (
         () => Company,
-        (company) => company.planifications
+        (company) => company.planifications, {eager: true,}
     )
     company: Company
 
     @ManyToOne (   
         () => Direction,
-        (direction) => direction.planifications         
+        (direction) => direction.planifications, {eager: true,}       
     )
     direction: Direction
 }

@@ -9,6 +9,7 @@ import { IndicatorModule } from './indicator/indicator.module';
 import { IndicatorcompanydirectionModule } from './indicatorcompanydirection/indicatorcompanydirection.module';
 import { PlanificationModule } from './planification/planification.module';
 import { BinnacleModule } from './binnacle/binnacle.module';
+import { ReportsModule } from './reports/reports.module';
 
 
 @Module({
@@ -32,6 +33,7 @@ import { BinnacleModule } from './binnacle/binnacle.module';
     IndicatorcompanydirectionModule,
     PlanificationModule,
     BinnacleModule,
+    ReportsModule,
 
   ],
 

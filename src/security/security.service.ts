@@ -7,7 +7,6 @@ import { Repository } from "typeorm";
 import * as bcrypt from 'bcrypt';
 import { LoginUserDto } from './dto/login-user.dto';
 import { JwtPayload } from './interfaces/jwt-payload.interface';
-import { JwtStrategy } from './strategies/jwt.strategy';
 import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
@@ -46,7 +45,10 @@ export class SecurityService {
 
     const user = await this.userRepository.findOne({
       where: {email},
-      select : {email: true, password: true}
+      //select : {email: true, password: true},
+      relations: {
+        direction: true,
+      }
     })
     
     if (!user){
@@ -58,8 +60,10 @@ export class SecurityService {
     }
 
     return {
-      ...user,
-       token: this.getJwtToken({id: user.id}) 
+        name: user.name,
+        direction: user.direction,
+        role: user.role,
+        token: this.getJwtToken({id: user.id}) 
     };
   }
 

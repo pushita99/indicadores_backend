@@ -10,26 +10,29 @@ export class Indicatorcompanydirection {
     id: number;
 
     @Column ('text')
-    value: string;
+    value: number;
 
     @Column ("date")
     date: Date;
 
     @ManyToOne (
         () => Indicator,
-        (indicator) => indicator.indicatorcompanydirections
+        (indicator) => indicator.indicatorcompanydirections,
+        {eager: true}
     )
     indicator: Indicator
 
     @ManyToOne (
         () => Company,
-        (company) => company.indicatorcompanydirections
+        (company) => company.indicatorcompanydirections,
+        {eager: true}
     )
     company: Company
 
     @ManyToOne (   
         () => Direction,
-        (direction) => direction.indicatorcompanydirections         
+        (direction) => direction.indicatorcompanydirections,
+        {eager: true}         
     )
     direction: Direction
 }

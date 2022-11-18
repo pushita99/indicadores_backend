@@ -27,10 +27,9 @@ export class Indicator {
     )
     measurementunit: Measurementunit;
 
-    @ManyToMany (
-        () => Direction
-    )@JoinTable ()
-    directions: Direction []        
+    @ManyToMany (() => Direction, (direction) => direction.indicators)
+    @JoinTable ()
+    directions: Direction [];        
 
     @OneToMany (
         () => Indicatorcompanydirection,

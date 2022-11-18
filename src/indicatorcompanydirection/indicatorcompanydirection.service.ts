@@ -17,8 +17,15 @@ export class IndicatorcompanydirectionService {
 
   async create(createIndicatorcompanydirectionDto: CreateIndicatorcompanydirectionDto) {
     
+    const {company,direction ,indicator, ...data} = createIndicatorcompanydirectionDto;
     try {
-      const indicatorcompanydirection = this.indicatorcompanydirectionRepository.create (createIndicatorcompanydirectionDto);
+     const indicatorcompanydirection = this.indicatorcompanydirectionRepository.create({
+       ...data,
+       indicator: {id: indicator},
+       company:  {id:company},
+       direction: {id: direction},
+     });
+     
       await this.indicatorcompanydirectionRepository.save(indicatorcompanydirection);
       return indicatorcompanydirection;
     } catch (error) {

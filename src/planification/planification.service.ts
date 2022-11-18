@@ -17,12 +17,13 @@ export class PlanificationService {
   
   async create(createPlanificationDto: CreatePlanificationDto) {
  
-    const {company, indicator, ...data} = createPlanificationDto;
+    const {company,direction ,indicator, ...data} = createPlanificationDto;
    try {
     const planification = this.planificationRepository.create({
       ...data,
       indicator: {id: indicator},
-      company:  {id:company}
+      company:  {id:company},
+      direction: {id: direction},
     });
 
     await this.planificationRepository.save(planification);

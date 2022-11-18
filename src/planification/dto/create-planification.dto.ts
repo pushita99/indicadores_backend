@@ -52,4 +52,8 @@ export class CreatePlanificationDto {
     @IsNumber ()
     indicator: number;
 
+    @Type (() => Number)
+    @IsNumber ()
+    direction: number;
+
 }

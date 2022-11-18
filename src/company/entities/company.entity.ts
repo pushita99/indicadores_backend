@@ -12,9 +12,10 @@ export class Company {
     name: string;
 
     @ManyToMany (
-        () => Direction
-    )@JoinTable ()
-    directions: Direction []
+        () => Direction, (directions) => directions.companies
+    )
+    @JoinTable ()
+    directions: Direction [];
     
     @OneToMany (
         () => Indicatorcompanydirection,

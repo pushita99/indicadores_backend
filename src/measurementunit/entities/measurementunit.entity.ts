@@ -13,5 +13,5 @@ export class Measurementunit {
         () => Indicator,
         (indicator) => indicator.measurementunit         
     )
-    indicators: Indicator
+    indicators: Indicator;
 }
