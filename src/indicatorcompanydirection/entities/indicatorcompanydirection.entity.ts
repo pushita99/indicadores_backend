@@ -1,8 +1,9 @@
 import { Company } from "src/company/entities/company.entity";
 import { Direction } from "src/direction/entities/direction.entity";
 import { Indicator } from "src/indicator/entities/indicator.entity";
-import { Column, Entity, ManyToOne, OneToOne, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, Index, ManyToOne, OneToOne, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 
+@Index(["indicator", "company", "direction"], {unique: true})
 @Entity ()
 export class Indicatorcompanydirection {
      

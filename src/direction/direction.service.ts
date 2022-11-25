@@ -29,11 +29,11 @@ export class DirectionService {
     return this.directionRepository.find({});
   }
   async findOne(id: number) {    
-    const direction = await this.directionRepository.findOneBy({id});
-    if (!direction) throw new NotFoundException ('La dirección no fue encontrada');
+    const direction = await this.directionRepository
+    .findOne({where: {id}, relations: {companies: true}});
+    if (!direction) throw new NotFoundException ('La direccion no fue encontrada');
     return direction;
   }
-
   update(id: number, updateDirectionDto: UpdateDirectionDto) {
     return `This action updates a #${id} direction`;
   }

@@ -31,18 +31,15 @@ export class ReportsService {
          relations: {
            planifications: true, 
            indicatorcompanydirections: true,
-           companies: true          
+           companies: true,
+           indicators: true,         
           }
           });
           console.log(direction);
           
-         const companies = direction.companies;
-         const planifications = direction.planifications;
-         const indicatorcompanydirections = direction.indicatorcompanydirections;
-
-         const allIndicators = await this.getIndicators();
+         const {companies, planifications, indicatorcompanydirections, indicators} = direction;
          const indicadores = [];
-         allIndicators.forEach(element => {
+         indicators.forEach(element => {
           indicadores.push({
             name: element?.name || 'hola',
             measurementunit: element.measurementunit?.name || '',
@@ -80,10 +77,6 @@ private getPlanifications(planifications: Planification[], date, indicator, comp
       return plan[0] && plan[0]['november'];
   }
 
-  async getIndicators() {
-    return await this.indicatorRepository.find({});
-  }
-  
 
   private getIndicator(indicadors: Indicatorcompanydirection[], date, indicator, company) {
     const ind = indicadors.filter((i)=>{
