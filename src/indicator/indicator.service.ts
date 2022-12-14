@@ -19,7 +19,7 @@ export class IndicatorService {
 
   async create(createIndicatorDto: CreateIndicatorDto) {
     
-    const {measurementunit, direction, ...data} = createIndicatorDto;
+    const {measurementunit, ...data} = createIndicatorDto;
     try {
       const indicator = this.indicatorRepository.create({
         ...data,

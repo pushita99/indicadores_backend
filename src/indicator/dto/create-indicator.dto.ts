@@ -16,13 +16,13 @@ export class CreateIndicatorDto {
     @IsNumber ()
     measurementunit: number;
 
-    @Type (() => Number)
+   /* @Type (() => Number)
     @IsNumber ()
     direction: number;
 
     @IsArray()
     @IsNotEmpty()
-    readonly directionsIds: number[];
+    readonly directionsIds: number[];*/
 
 }
 

@@ -34,8 +34,21 @@ export class DirectionService {
     if (!direction) throw new NotFoundException ('La direccion no fue encontrada');
     return direction;
   }
-  update(id: number, updateDirectionDto: UpdateDirectionDto) {
-    return `This action updates a #${id} direction`;
+  async update(id: number, updateDirectionDto: UpdateDirectionDto) {
+    const direction = await this.directionRepository.preload ({
+      id,
+      ...updateDirectionDto
+    });
+
+    if (!direction) throw new NotFoundException('Empresa no encontrada')
+    
+    try {
+      await this.directionRepository.save (direction);
+      return direction;
+    }
+    catch (error){
+      this.handleDBExceptions(error);
+    }
   }
 
   async remove(id: number) {

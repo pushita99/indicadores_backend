@@ -8,11 +8,10 @@ export class CreateCompanyDto {
     @MinLength (1)
     name: string;
 
-    @IsArray()
-    @IsNotEmpty()
+    /*@IsArray()    
     readonly directionsIds: number[];
     
     @Type (() => Number)
     @IsNumber ()
-    direction: number;
+    direction: number;*/
 }

@@ -1,5 +1,4 @@
 import { IsString, MinLength } from "class-validator";
-import { ManyToMany } from "typeorm";
 
 
 export class CreateDirectionDto {
