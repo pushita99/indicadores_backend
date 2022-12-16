@@ -25,12 +25,12 @@ export class DirectionService {
     }   
   }
 
-  findAll() {
+  findAll() {                                                                          
     return this.directionRepository.find({});
   }
   async findOne(id: number) {    
     const direction = await this.directionRepository
-    .findOne({where: {id}, relations: {companies: true}});
+    .findOne({where: {id}, relations: {companies: true, indicators: true}});
     if (!direction) throw new NotFoundException ('La direccion no fue encontrada');
     return direction;
   }
